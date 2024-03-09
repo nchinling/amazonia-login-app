@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { AccountService } from './account.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'amazonia-frontend';
+  KEY ="username"
+
+  router = inject(Router)
+  accountSvc = inject(AccountService)
+
+  ngOnInit() {
+    localStorage.removeItem(this.KEY);
+    this.accountSvc.username=''
+    this.accountSvc.password=''
+    this.router.navigate([''])
+  }
 }
