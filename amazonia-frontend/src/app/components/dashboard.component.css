@@ -1,0 +1,40 @@
+.container-fluid {
+/* display: flex; */
+justify-content: center;
+align-items: center;
+}
+
+.btn:hover {
+background-color: #0056b3;
+}
+
+.nav-tabs {
+background-color: #f8f9fa;
+border-bottom: 1px solid #dee2e6;
+}
+
+.nav-link {
+color: #333;
+}
+
+.nav-link.active {
+background-color: #fff;
+border-color: #dee2e6 #dee2e6 #fff;
+border-bottom-color: transparent;
+}
+
+
+
+.custom-button {
+
+background-color: transparent;
+color: grey;
+border: none
+
+}
+
+.custom-button:hover {
+color: black;
+font-weight: bold;
+}
+

@@ -1,1 +1,17 @@
-<p>dashboard works!</p>
+<div class = "container">
+
+    <p>Welcome, {{name}}.</p>
+    <p>Username: {{username}}</p>
+    <p>Role: {{role}}</p>
+
+    <ng-container *ngIf="role === 'Manager'; else notManager">
+        Employees are Amazonia's most valuable assets. 
+        <a [routerLink]="['/manager-page', username]">Manage</a> your employee's information. 
+    </ng-container>
+
+    <ng-template #notManager>
+        We value our greatest assets, you.
+    </ng-template>
+
+</div>
+

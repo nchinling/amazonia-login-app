@@ -21,8 +21,10 @@ export class AccountService {
   password = "";
   queryParams: any;
   account_id = ""
+  name = ""
+  role = ""
   KEY = "username"
-  key!: string
+  // key!: string
 
 
   hasLogin(): boolean {
@@ -34,9 +36,9 @@ export class AccountService {
  
   }
 
-  logout(): void {
-    localStorage.removeItem(this.KEY);
-  }
+  // logout(): void {
+  //   localStorage.removeItem(this.KEY);
+  // }
 
   isAuthenticated(): boolean {
     return localStorage.getItem(this.KEY) !== null;
@@ -59,15 +61,20 @@ export class AccountService {
         
         if (error instanceof HttpErrorResponse && error.status === 500) {
           const serverError = error.error.error; 
-          errorMessage = 'Server error: ' + serverError;
+          errorMessage = serverError;
         }
         
         this.onErrorMessage.next(errorMessage);
         return throwError(() => ({ error: errorMessage }));
       }),
-      filter((response) => response !== null), 
       //the fired onLoginRequest.next is received in dashboard component's ngOnit 
-      tap(response => this.onLoginRequest.next(response))
+      tap(response => {
+        this.username = response.username;
+        this.account_id = response.account_id;
+        this.name = response.name;
+        this.role = response.role;
+        this.onLoginRequest.next(response);
+      })
     );
   }
 

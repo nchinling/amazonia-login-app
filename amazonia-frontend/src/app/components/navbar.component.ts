@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnChanges, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription, of } from 'rxjs';
 import { AccountService } from '../account.service';
@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
   private isLoggedInSubscription: Subscription | undefined;
   KEY = "username"
   username = ''
-  queryParams: any
+  role = ''
 
   router = inject(Router)
   accountSvc = inject(AccountService)
@@ -30,12 +30,9 @@ export class NavbarComponent implements OnInit {
     this.isLoggedInSubscription = this.accountSvc.isLoggedInChanged.subscribe(isLoggedIn => {
       this.isLoggedIn$ = of(isLoggedIn);
       console.info('User is logged in: ' + isLoggedIn);
+      this.username = this.accountSvc.username;
+      this.role = this.accountSvc.role;
     });
-    
-    this.username = this.accountSvc.username
-    this.queryParams = this.accountSvc.queryParams
-    console.info('the parsedUsername is' + this.username)
-    console.info('the queryParams is' + this.queryParams)
 
 
   }
@@ -48,27 +45,9 @@ export class NavbarComponent implements OnInit {
     // reset 
     this.accountSvc.username=''
     this.accountSvc.password=''
-    this.accountSvc.key=''
     this.router.navigate(['/'])
   }
 
-  // ngAfterViewInit(): void{
-  //   this.isLoggedIn$ = this.accountSvc.isLoggedInChanged
-  //   this.parsedUsername = this.accountSvc.parsedUsername
-  //   this.queryParams = this.accountSvc.queryParams
-  //   console.info('the parsedUsername is' + this.parsedUsername)
-  //   console.info('the queryParams is' + this.queryParams)
-
-  // }
-
-  // ngOnChanges(): void{
-  //   this.isLoggedIn$ = this.accountSvc.isLoggedInChanged
-  //   this.parsedUsername = this.accountSvc.parsedUsername
-  //   this.queryParams = this.accountSvc.queryParams
-  //   console.info('the parsedUsername is' + this.parsedUsername)
-  //   console.info('the queryParams is' + this.queryParams)
-
-  // }
 
   ngOnDestroy(): void {
     if (this.isLoggedInSubscription) {

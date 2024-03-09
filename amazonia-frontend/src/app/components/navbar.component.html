@@ -17,24 +17,18 @@
         <div class="collapse navbar-collapse" id="navbarLoggedIn">
           <ul class="navbar-nav mt-2 mt-lg-0">
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/dashboard', username]" [queryParams]="queryParams">Dashboard</a>
+              <a class="nav-link" [routerLink]="['/dashboard', username]">Dashboard</a>
           
             </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/research']">Research</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/portfolio', username]">Portfolio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/logout']">Log out</a>
+            <li class="nav-item" *ngIf="role === 'Manager'">
+              <a class="nav-link" [routerLink]="['/manager-page', username]">Manage</a>
             </li>
 
-            <!-- <li class="nav-item">
+            <li class="nav-item">
              
                 <button class="btn btn-primary align-text-top" (click)="logout()" style="font-size: 16px;">Log Out</button>
           
-            </li> -->
+            </li>
 
     
           </ul>

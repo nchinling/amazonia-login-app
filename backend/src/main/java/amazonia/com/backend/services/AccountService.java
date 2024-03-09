@@ -18,18 +18,14 @@ public class AccountService {
     private AccountRepository accountRepo;
 
     public Account loginAccount(String username, String password) throws IOException, AccountException {
-            Optional<Account> optAccount = accountRepo.getAccountByUsername(username);
+            Optional<Account> optAccount = accountRepo.getAccountByUsernameAndPassword(username,password);
 
             if (optAccount.isPresent()) {
                 Account loggedInAccount = optAccount.get();
                 System.out.printf(">>>String Password is >>>" + password);
                 System.out.printf(">>>loggedInAccountPassword is >>>" + loggedInAccount.getPassword());   
-                if (loggedInAccount.getPassword().equals(password)){
-                    return loggedInAccount;
-                }
-                else{
-                    throw new AccountException("Invalid userid or password");
-                }
+                return loggedInAccount;
+      
 
             } else {
                 throw new AccountException("Invalid userid or password");

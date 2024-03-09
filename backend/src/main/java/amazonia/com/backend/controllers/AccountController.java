@@ -59,7 +59,7 @@ public class AccountController {
             }
          
         System.out.printf(">>>Successfully logged in>>>>>\n");   
-
+        System.out.println("Response is: " + response);   
         return ResponseEntity.ok(response.toString());
 
     }

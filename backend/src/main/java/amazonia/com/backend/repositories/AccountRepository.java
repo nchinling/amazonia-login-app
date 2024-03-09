@@ -17,9 +17,9 @@ public class AccountRepository {
     @Autowired 
     JdbcTemplate jdbcTemplate;
 
-    public Optional<Account> getAccountByUsername(String username){
+    public Optional<Account> getAccountByUsernameAndPassword(String username, String password){
         List<Account> accounts = jdbcTemplate.query(SELECT_ACCOUNT_BY_USERNAME, 
-        new AccountRowMapper() , new Object[]{username});
+        new AccountRowMapper() , new Object[]{username, password});
         
         if (!accounts.isEmpty()) {
             return Optional.of(accounts.get(0));

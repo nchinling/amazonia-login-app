@@ -8,18 +8,20 @@ import { ManagerpageComponent } from './components/managerpage.component';
 import { MainComponent } from './components/main.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './components/navbar.component';
-import { loginGuard } from './utils';
+import { loginGuard, loginGuardManager } from './utils';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AccountService } from './account.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { WarningpageComponent } from './components/warningpage.component';
 
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent, title: 'Welcome to Amazonia' },
   { path: 'login', component: LoginComponent, title: 'Log In' },
-  { path: 'dashboard/:parsedUsername', component: DashboardComponent, title: 'DashBoard', canActivate: [loginGuard]},
-  { path: 'manager-page/:parsedUsername', component: ManagerpageComponent, title: 'Manager View', canActivate: [loginGuard]},
+  { path: 'dashboard/:username', component: DashboardComponent, title: 'DashBoard', canActivate: [loginGuard]},
+  { path: 'manager-page/:username', component: ManagerpageComponent, title: 'Manager View', canActivate: [loginGuardManager]},
+  { path: 'restricted-warning', component: WarningpageComponent, title: 'Warning', canActivate: [loginGuard]},
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ]
 
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
     LoginComponent,
     DashboardComponent,
     ManagerpageComponent,
-    NavbarComponent
+    NavbarComponent,
+    WarningpageComponent
   ],
   imports: [
     BrowserModule, ReactiveFormsModule, FormsModule, HttpClientModule,

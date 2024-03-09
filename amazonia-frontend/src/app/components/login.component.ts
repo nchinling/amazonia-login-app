@@ -49,27 +49,19 @@ export class LoginComponent implements OnInit {
     console.info('username: ', username)
     console.info('password: ', password)
 
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 10000);
+    // setTimeout(() => {
+    //   this.isLoading = false;
+    // }, 10000);
 
 
     //Promise is used instead of observables as it doesn't require ongoing updates
     this.login$=firstValueFrom(this.accountSvc.login(username, password))
     this.login$.then((response) => {
-      console.log('timestamp:', response.timestamp);
-      console.log('username:', response.username);
-      const queryParams = {
-        account_id: response.account_id,
-        username: response.username,
-      };
-
-      this.accountSvc.queryParams = queryParams;
       this.accountSvc.account_id = response.account_id
-      this.accountSvc.key = response.key
+      // this.accountSvc.key = response.key
 
 
-      this.router.navigate(['/dashboard', username], { queryParams: queryParams })
+      this.router.navigate(['/dashboard', username])
     }).catch((error)=>{
   
       this.errorMessage = error.error;
