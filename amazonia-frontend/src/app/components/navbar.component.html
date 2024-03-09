@@ -10,21 +10,21 @@
             <span class="navbar-toggler-icon"></span>
           </button>
     
-        <a class="navbar-brand" [routerLink]="['/dashboard', parsedUsername]">  
+        <a class="navbar-brand" [routerLink]="['/dashboard', username]">  
           <span class="brand-text-1">Amazon</span><span class="brand-text-2">ia</span>
         </a>  
     
         <div class="collapse navbar-collapse" id="navbarLoggedIn">
           <ul class="navbar-nav mt-2 mt-lg-0">
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/dashboard', parsedUsername]" [queryParams]="queryParams">Dashboard</a>
+              <a class="nav-link" [routerLink]="['/dashboard', username]" [queryParams]="queryParams">Dashboard</a>
           
             </li>
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/research']">Research</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/portfolio', parsedUsername]">Portfolio</a>
+              <a class="nav-link" [routerLink]="['/portfolio', username]">Portfolio</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/logout']">Log out</a>

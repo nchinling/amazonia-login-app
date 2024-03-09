@@ -9,7 +9,7 @@ import { AccountService } from '../account.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  isCollapsed = true;
+  // isCollapsed = true;
   collapsed = true;
   toggleCollapsed(): void {
     this.collapsed = !this.collapsed;
@@ -17,10 +17,9 @@ export class NavbarComponent implements OnInit {
   
   isLoggedIn$!: Observable<boolean>
 
-  //check if can be renamed
   private isLoggedInSubscription: Subscription | undefined;
   KEY = "username"
-  parsedUsername = ''
+  username = ''
   queryParams: any
 
   router = inject(Router)
@@ -33,9 +32,9 @@ export class NavbarComponent implements OnInit {
       console.info('User is logged in: ' + isLoggedIn);
     });
     
-    this.parsedUsername = this.accountSvc.parsedUsername
+    this.username = this.accountSvc.username
     this.queryParams = this.accountSvc.queryParams
-    console.info('the parsedUsername is' + this.parsedUsername)
+    console.info('the parsedUsername is' + this.username)
     console.info('the queryParams is' + this.queryParams)
 
 
