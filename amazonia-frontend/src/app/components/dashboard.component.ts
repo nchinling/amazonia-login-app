@@ -27,7 +27,5 @@ export class DashboardComponent implements OnInit {
     this.accountId = this.accountSvc.account_id
     this.name = this.accountSvc.name
     this.role = this.accountSvc.role
-
   }
-
 }

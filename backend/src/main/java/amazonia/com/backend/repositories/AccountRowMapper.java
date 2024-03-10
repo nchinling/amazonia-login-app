@@ -20,8 +20,6 @@ public class AccountRowMapper implements RowMapper<Account> {
         account.setPassword(rs.getString("password"));
         account.setRole(rs.getString("role"));
 
-
         return account;
-
     }
 }

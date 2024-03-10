@@ -18,7 +18,7 @@ public class AccountRepository {
     JdbcTemplate jdbcTemplate;
 
     public Optional<Account> getAccountByUsernameAndPassword(String username, String password){
-        List<Account> accounts = jdbcTemplate.query(SELECT_ACCOUNT_BY_USERNAME, 
+        List<Account> accounts = jdbcTemplate.query(SELECT_ACCOUNT_BY_USERNAME_AND_PASSWORD, 
         new AccountRowMapper() , new Object[]{username, password});
         
         if (!accounts.isEmpty()) {

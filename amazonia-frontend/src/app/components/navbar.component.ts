@@ -9,7 +9,6 @@ import { AccountService } from '../account.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  // isCollapsed = true;
   collapsed = true;
   toggleCollapsed(): void {
     this.collapsed = !this.collapsed;
@@ -25,7 +24,6 @@ export class NavbarComponent implements OnInit {
   router = inject(Router)
   accountSvc = inject(AccountService)
 
-
   ngOnInit(): void {
     this.isLoggedInSubscription = this.accountSvc.isLoggedInChanged.subscribe(isLoggedIn => {
       this.isLoggedIn$ = of(isLoggedIn);
@@ -33,8 +31,6 @@ export class NavbarComponent implements OnInit {
       this.username = this.accountSvc.username;
       this.role = this.accountSvc.role;
     });
-
-
   }
 
   logout(): void {
@@ -47,7 +43,6 @@ export class NavbarComponent implements OnInit {
     this.accountSvc.password=''
     this.router.navigate(['/'])
   }
-
 
   ngOnDestroy(): void {
     if (this.isLoggedInSubscription) {

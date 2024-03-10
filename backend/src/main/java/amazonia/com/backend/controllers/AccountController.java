@@ -35,7 +35,6 @@ public class AccountController {
         String username = form.getFirst("username");
         String password = form.getFirst("password");
 
-        System.out.printf(">>> I am inside Controller Login >>>>>\n");
         JsonObject response = null;
 
             Account loggedInAccount;
@@ -49,7 +48,6 @@ public class AccountController {
                 .build();
             } catch (AccountException | IOException e) {
                 String errorMessage = e.getMessage();
-                System.out.printf(">>>Account Exception occured>>>>>\n");   
                 response = Json.createObjectBuilder()
                 .add("error", errorMessage)
                 .build();
@@ -57,11 +55,7 @@ public class AccountController {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(response.toString());
             }
-         
-        System.out.printf(">>>Successfully logged in>>>>>\n");   
-        System.out.println("Response is: " + response);   
-        return ResponseEntity.ok(response.toString());
 
+        return ResponseEntity.ok(response.toString());
     }
-    
 }

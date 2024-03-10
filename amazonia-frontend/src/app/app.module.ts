@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login.component';
 import { DashboardComponent } from './components/dashboard.component';
@@ -15,7 +14,6 @@ import { AccountService } from './account.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WarningpageComponent } from './components/warningpage.component';
 
-
 const appRoutes: Routes = [
   { path: '', component: MainComponent, title: 'Welcome to Amazonia' },
   { path: 'login', component: LoginComponent, title: 'Log In' },
@@ -24,7 +22,6 @@ const appRoutes: Routes = [
   { path: 'restricted-warning', component: WarningpageComponent, title: 'Warning', canActivate: [loginGuard]},
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ]
-
 
 @NgModule({
   declarations: [

@@ -3,7 +3,6 @@ package amazonia.com.backend.services;
 import java.io.IOException;
 import java.util.Optional;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,12 +20,8 @@ public class AccountService {
             Optional<Account> optAccount = accountRepo.getAccountByUsernameAndPassword(username,password);
 
             if (optAccount.isPresent()) {
-                Account loggedInAccount = optAccount.get();
-                System.out.printf(">>>String Password is >>>" + password);
-                System.out.printf(">>>loggedInAccountPassword is >>>" + loggedInAccount.getPassword());   
+                Account loggedInAccount = optAccount.get();   
                 return loggedInAccount;
-      
-
             } else {
                 throw new AccountException("Invalid userid or password");
             }

@@ -25,52 +25,39 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.errorMessage$ = this.accountSvc.onErrorMessage;
-    // The username and password is pre-filled for development. It will be removed in production.
     this.loginForm = this.fb.group({
-      username: this.fb.control<string>('nchinling', [Validators.required, Validators.pattern('[a-zA-Z0-9_]+')]),
-      password: this.fb.control<string>('#a888888', [ Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[a-zA-Z])(?=.*[@#$%^&+=]).*$') ])
+      username: this.fb.control<string>('', [Validators.required, Validators.pattern('[a-zA-Z0-9_]+')]),
+      password: this.fb.control<string>('', [ Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[a-zA-Z])(?=.*[@#$%^&+=]).*$') ])
     })
   }
-
 
   invalidField(ctrlName:string): boolean{
     return !!(this.loginForm.get(ctrlName)?.invalid && this.loginForm.get(ctrlName)?.dirty)
   }
-
 
   login() {
     this.isLoading = true;
     const username = this.loginForm.get('username')?.value
     const password = this.loginForm.get('password')?.value
 
-    //the username and password are passed to loginSvc for loginGuard
+    //the username and password are passed to loginSvc for loginGuard and loginGuardManager
     this.accountSvc.username = username
     this.accountSvc.password = password
     console.info('username: ', username)
     console.info('password: ', password)
 
-    // setTimeout(() => {
-    //   this.isLoading = false;
-    // }, 10000);
-
-
     //Promise is used instead of observables as it doesn't require ongoing updates
     this.login$=firstValueFrom(this.accountSvc.login(username, password))
     this.login$.then((response) => {
       this.accountSvc.account_id = response.account_id
-      // this.accountSvc.key = response.key
-
 
       this.router.navigate(['/dashboard', username])
     }).catch((error)=>{
   
       this.errorMessage = error.error;
       console.info('this.errorMessage is ' + this.errorMessage)
-   
     });
 
-
   }
-
 
 }

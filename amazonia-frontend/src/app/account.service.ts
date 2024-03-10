@@ -24,8 +24,6 @@ export class AccountService {
   name = ""
   role = ""
   KEY = "username"
-  // key!: string
-
 
   hasLogin(): boolean {
     if(this.username&&this.password)
@@ -36,14 +34,9 @@ export class AccountService {
  
   }
 
-  // logout(): void {
-  //   localStorage.removeItem(this.KEY);
-  // }
-
   isAuthenticated(): boolean {
     return localStorage.getItem(this.KEY) !== null;
   }
-
 
   login(username: string, password: string): Observable<LoginResponse> {
 

@@ -6,7 +6,7 @@
 
     <ng-container *ngIf="role === 'Manager'; else notManager">
         Employees are Amazonia's most valuable assets. 
-        <a [routerLink]="['/manager-page', username]">Manage</a> your employee's information. 
+        <a [routerLink]="['/manager-page', username]">Manage</a> your employees' information. 
     </ng-container>
 
     <ng-template #notManager>

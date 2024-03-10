@@ -5,7 +5,6 @@ export interface LoginResponse {
     role: string
 }
 
-
 export interface ErrorResponse {
     error: string; 
 }
