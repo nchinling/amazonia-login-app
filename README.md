@@ -1,6 +1,6 @@
 # Login Application
 
-This is a simple login application built with Java for the backend and with a UI implemented using Angular. The application follows the Model-View-Controller (MVC) pattern to separate concerns and ensure maintainability.
+This is a simple login application built with Java for the backend and with a UI implemented using Angular. The application follows the Model-View-Controller (MVC) pattern to separate concerns and ensure maintainability. It demonstrates differentiated user access based on assigned roles. 
 
 ## Video demonstration
 View a video demonstration of the login app at [https://youtu.be/CYxTzKupOCk](https://youtu.be/CYxTzKupOCk)
