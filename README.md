@@ -5,6 +5,8 @@ This is a simple login application built with Java for the backend and with a UI
 ## Video demonstration
 View a video demonstration of the login app at [https://youtu.be/CYxTzKupOCk](https://youtu.be/CYxTzKupOCk)
 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/CYxTzKupOCk/0.jpg)](https://www.youtube.com/watch?v=CYxTzKupOCk)
+
 ## Features
 
 ### User Authentication
